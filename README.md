@@ -11,7 +11,8 @@ Aplikasi **To-Do List** ini merupakan aplikasi web sederhana yang bertujuan untu
 - **MySQL**: Versi `10.4.32`  
 - **Bahasa Pemrograman**: PHP, JavaScript, HTML, CSS, TailwindCSS  
 - **Framework UI**: TailwindCSS  
-- **Library Frontend**: Font Awesome, Tcpdf, PhpSpreadsheet, AOS, Ajax, Composer, SweetAlert2
+- **Library Frontend**: Font Awesome, AOS, Ajax, SweetAlert2
+- **Framework Backend**: Tcpdf, PhpSpreadsheet, Composer
 - **Database**: MariaDB 
 
 ---
@@ -38,7 +39,6 @@ Database `luxetask` memiliki tabel utama yaitu `users` dan `tasks`, dengan struk
 | `password`  | VARCHAR    | Password terenkripsi      	 	 |
 | `role`      | ENUM       | Role pengguna (`admin`, `pengguna`) |
 | `created_at`| TIMESTAMP  | Waktu registrasi          		 |
-|----------------------------------------------------------------|
 
 ### Tabel `tasks`
 | Field        | Tipe Data | Deskripsi                                  |
@@ -51,70 +51,8 @@ Database `luxetask` memiliki tabel utama yaitu `users` dan `tasks`, dengan struk
 | `status`     | ENUM       | Status tugas (`tertunda`, `selesai`) 	|
 | `created_at` | TIMESTAMP  | Waktu pembuatan tugas     		|
 | `updated_at` | TIMESTAMP  | Waktu terakhir diupdate   		|
-|-----------------------------------------------------------------------|
 
-## 📦 Instalasi dan Penggunaan
-
-1. Pastikan Anda telah menginstall **XAMPP** versi `8.2` atau yang lebih baru.  
-2. Clone repository ini:  
-   ```bash
-   git clone # 📋 To-Do List Application
-
-Aplikasi **To-Do List** ini merupakan aplikasi web sederhana yang bertujuan untuk membantu pengguna mengatur dan melacak tugas mereka. Berikut adalah detail tentang aplikasi yang digunakan dalam project ini:
-
----
-
-## 🛠️ Sistem yang Digunakan
-
-- **XAMPP**: Versi `8.2`  
-- **PHP**: Versi `8.2.12`  
-- **MySQL**: Versi `10.4.32`  
-- **Bahasa Pemrograman**: PHP, JavaScript, HTML, CSS, TailwindCSS  
-- **Framework UI**: TailwindCSS  
-- **Library Frontend**: Font Awesome, Tcpdf, PhpSpreadsheet, AOS, Ajax, Composer, SweetAlert2
-- **Database**: MariaDB 
-
----
-
-## 🚀 Fitur Aplikasi
-
-- **Login Multi Users**: Login dan register untuk setiap pengguna.  
-- **Dashboard Pengguna**: Menampilkan tugas spesifik berdasarkan pengguna yang login.  
-- **Manajemen Tugas**: Tambah, edit, hapus, dan tandai tugas sebagai selesai.  
-- **Deadline dengan Input Date**: Input tanggal dengan antarmuka kalender.  
-- **Prioritas Tugas**: Tugas dapat diberi prioritas (biasa, penting).  
-
----
-
-## 📂 Struktur Database
-Database `luxetask` memiliki tabel utama yaitu `users` dan `tasks`, dengan struktur sebagai berikut:
-
-### Tabel `users`
-| Field       | Tipe Data | Deskripsi                		         |
-|-------------|------------|-------------------------------------|
-| `user_id`   | INT        | Primary key               		       |
-| `name`      | VARCHAR    | Nama pengguna             		       |
-| `email`     | VARCHAR    | Email unik                	 	       |
-| `password`  | VARCHAR    | Password terenkripsi      	 	       |
-| `role`      | ENUM       | Role pengguna (`admin`, `pengguna`) |
-| `created_at`| TIMESTAMP  | Waktu registrasi          		       |
-|----------------------------------------------------------------|
-
-### Tabel `tasks`
-| Field        | Tipe Data | Deskripsi                                  |
-|--------------|------------|-------------------------------------------|
-| `task_id`    | INT        | Primary key               	            	|
-| `user_id`    | INT        | Foreign key dari `users`  		            |
-| `task_name`  | VARCHAR    | Nama tugas                		            |
-| `deadline`   | VARCHAR    | Deadline tugas            		            |
-| `priority`   | ENUM       | Prioritas (`tinggi`, `sedang`, `rendah`)  |
-| `status`     | ENUM       | Status tugas (`tertunda`, `selesai`) 	    |
-| `created_at` | TIMESTAMP  | Waktu pembuatan tugas     		            |
-| `updated_at` | TIMESTAMP  | Waktu terakhir diupdate   		            |
-|-----------------------------------------------------------------------|
-
-## 📦 Instalasi dan Penggunaan
-
+## 📦 Cara Install
 1. Pastikan Anda telah menginstall **XAMPP** versi `8.2` atau yang lebih baru.  
 2. Clone repository ini:  
    ```bash
