@@ -47,7 +47,7 @@ Database `luxetask` memiliki tabel utama yaitu `users` dan `tasks`, dengan struk
 | `user_id`    | INT        | Foreign key dari `users`  		|
 | `task_name`  | VARCHAR    | Nama tugas                		|
 | `deadline`   | VARCHAR    | Deadline tugas            		|
-| `priority`   | ENUM       | Prioritas (`tinggi`, `sedang`, `rendah`)  |
+| `priority`   | ENUM       | Prioritas (`penting`, `tertunda`, |
 | `status`     | ENUM       | Status tugas (`tertunda`, `selesai`) 	|
 | `created_at` | TIMESTAMP  | Waktu pembuatan tugas     		|
 | `updated_at` | TIMESTAMP  | Waktu terakhir diupdate   		|
