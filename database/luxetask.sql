@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 12, 2025 at 06:28 AM
+-- Generation Time: Feb 13, 2025 at 10:28 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -38,19 +38,6 @@ CREATE TABLE `tasks` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `tasks`
---
-
-INSERT INTO `tasks` (`task_id`, `user_id`, `task_name`, `deadline`, `status`, `priority`, `created_at`, `updated_at`) VALUES
-(115, 33, 'Merapihkan code project website todolist', '2025-02-13', 'selesai', 'penting', '2025-02-12 05:15:33', '2025-02-12 05:17:20'),
-(116, 33, 'tes1', 'Tidak ada tanggal pasti', 'selesai', 'biasa', '2025-02-12 05:15:52', '2025-02-12 05:17:22'),
-(117, 33, 'tes1', 'Tidak ada tanggal pasti', 'selesai', 'biasa', '2025-02-12 05:15:54', '2025-02-12 05:17:27'),
-(118, 33, 'tes1', 'Tidak ada tanggal pasti', 'selesai', 'biasa', '2025-02-12 05:15:56', '2025-02-12 05:17:29'),
-(119, 33, 'tes1', 'Tidak ada tanggal pasti', 'selesai', 'biasa', '2025-02-12 05:15:58', '2025-02-12 05:17:44'),
-(120, 33, 'tes1', 'Tidak ada tanggal pasti', 'tertunda', 'biasa', '2025-02-12 05:16:05', '2025-02-12 05:16:05'),
-(121, 33, 'tes1', 'Tidak ada tanggal pasti', 'tertunda', 'biasa', '2025-02-12 05:16:26', '2025-02-12 05:16:26');
-
 -- --------------------------------------------------------
 
 --
@@ -71,8 +58,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `name`, `email`, `password`, `role`, `created_at`) VALUES
-(1, 'Admin', 'admin@gmail.com', '$2y$10$x0erqCjk.TtVKAPIHrTFNe.AXQLoQY8wjSF16sQ.iQTugcjOa6uHu', 'admin', '2025-02-01 02:22:48'),
-(33, 'SyhrlmyZID', 'syhrlmyz.id@gmail.com', '$2y$10$AHXZ22EgBm4Oirgm6pAehep8s48HvAovzgatH7vNTtftLR7H7.gqO', 'pengguna', '2025-02-12 05:12:06');
+(1, 'Luxe Task', 'luxetask@gmail.com', '$2y$10$vNELdqHaKz3XuEHzZ66vouC/jyWxtpCc6RhAppU93wPcKDpxbrBye', 'admin', '2025-02-13 09:25:23'),
+(2, 'Syahrul M.Y', 'syhrlmyz.id@gmail.com', '$2y$10$sXW/nSkIDew8a.ohg6Loy.5gP9HswbY7UFOMyOc3oJiJnuXTD8Th.', 'pengguna', '2025-02-13 09:26:21');
 
 --
 -- Indexes for dumped tables
@@ -83,7 +70,7 @@ INSERT INTO `users` (`user_id`, `name`, `email`, `password`, `role`, `created_at
 --
 ALTER TABLE `tasks`
   ADD PRIMARY KEY (`task_id`),
-  ADD KEY `tasks_ibfk_1` (`user_id`);
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `users`
@@ -100,13 +87,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `tasks`
 --
 ALTER TABLE `tasks`
-  MODIFY `task_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
+  MODIFY `task_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
@@ -116,7 +103,7 @@ ALTER TABLE `users`
 -- Constraints for table `tasks`
 --
 ALTER TABLE `tasks`
-  ADD CONSTRAINT `tasks_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `fk_user_task` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
