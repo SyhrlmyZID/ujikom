@@ -2,7 +2,7 @@
 
 $host = 'localhost';
 $username = 'root';
-$password = 'admin#1234';
+$password = '';
 $database = 'luxetask';
 
 $conn = new mysqli($host, $username, $password, $database);

@@ -8,7 +8,7 @@ use PhpOffice\PhpSpreadsheet\Style\Color;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
 use PhpOffice\PhpSpreadsheet\Style\Border;
 
-$conn = new mysqli("localhost", "root", "admin#1234", "luxetask"); 
+$conn = new mysqli("localhost", "root", "", "luxetask"); 
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);

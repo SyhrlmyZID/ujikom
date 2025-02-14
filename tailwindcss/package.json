@@ -1,4 +1,8 @@
 {
+<<<<<<< HEAD
+  "dependencies": {
+    "sweetalert2": "^11.16.0"
+=======
   "name": "tailwindcss",
   "version": "1.0.0",
   "main": "index.js",
@@ -11,5 +15,6 @@
   "description": "",
   "devDependencies": {
     "tailwindcss": "^3.4.17"
+>>>>>>> 556e05d (Perbaikan Animasi AOS)
   }
 }

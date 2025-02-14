@@ -24,12 +24,8 @@ include 'php/session_index.php';
     <link rel="stylesheet" href="tailwindcss/src/output.css">
 
     <!-- Vendor Files -->
-    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="tailwindcss/src/poppins.css">
-
-    <style>
-
-    </style>
+    <link rel="stylesheet" href="assets/vendor/aos/dist/aos.css">
 
 </head>
 
@@ -440,7 +436,7 @@ include 'php/session_index.php';
         </footer> <!-- End- Footer -->
 
         <!-- Vendor Files -->
-        <script src="assets/vendor/aos/aos.js"></script>
+        <script src="assets/vendor/aos/dist/aos.js"></script>
 
         <!-- Javascript Pages -->
         <script>
@@ -482,10 +478,9 @@ include 'php/session_index.php';
                 });
             });
 
-            // Aos Init
             AOS.init({
                 duration: 1000,
-                once: false,
+                once: true
             });
         </script>
 
