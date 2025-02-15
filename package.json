@@ -1,6 +1,25 @@
 {
+<<<<<<< HEAD
   "dependencies": {
+<<<<<<< HEAD
     "aos": "^2.3.4",
     "sweetalert2": "^11.6.13"
+=======
+    "sweetalert2": "^11.16.0"
+=======
+  "name": "tailwindcss",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+>>>>>>> 556e05d (Perbaikan Animasi AOS)
+>>>>>>> d0a5e49fce20dd4a1786c8ad1ce0764239494c50
   }
 }
