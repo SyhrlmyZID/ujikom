@@ -28,10 +28,9 @@ include '../php/pages/dashboard_buat_tugas/main.php';
 
   <!-- Vendor Files -->
   <link rel="stylesheet" href="../assets/vendor/FontAwesome6Pro/css/all.min.css">
-  <script src="../assets/vendor/sweetalert2/sweetalert2.all.min.js"></script>
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/main.css">
 
 </head>
 
@@ -51,7 +50,9 @@ include '../php/pages/dashboard_buat_tugas/main.php';
       <i class="fad fa-chevron-double-down"></i>
     </button>
     <div id="navbar"
-      class="animated md:hidden md:fixed md:top-0 md:w-full md:left-0 md:mt-16 md:border-t md:border-b md:border-gray-200 md:p-10 md:bg-white flex-1 pl-3 flex flex-row flex-wrap justify-end items-center md:flex-col md:items-center">
+      class="animated md:hidden md:fixed md:top-0 md:w-full md:left-0 md:mt-16 md:border-t md:border-b md:border-gray-200 md:p-10 md:bg-white flex-1 pl-3 flex flex-row flex-wrap justify-between items-center md:flex-col md:items-center">
+
+      <div></div>
 
       <div class="flex flex-row-reverse items-center">
 
@@ -109,7 +110,7 @@ include '../php/pages/dashboard_buat_tugas/main.php';
         <p class="uppercase text-xs text-gray-600 mb-4 tracking-wider">Dashboard</p>
 
         <a href="dashboard_beranda.php"
-          class="mb-3 capitalize font-medium text-sm hover:text-blue-700 transition ease-in-out duration-500">
+          class="hover:text-blue-700 mb-3 capitalize font-medium text-sm transition ease-in-out duration-500">
           <i class="fad fa-chart-pie text-xs mr-2"></i>
           Beranda
         </a>
@@ -134,7 +135,8 @@ include '../php/pages/dashboard_buat_tugas/main.php';
 
         <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">Pengaturan</p>
 
-        <a href="dashboard_pengaturan.php" class="mb-3 capitalize font-medium text-sm hover:text-blue-700 transition ease-in-out duration-500">
+        <a href="dashboard_pengaturan.php"
+          class="mb-3 capitalize font-medium text-sm hover:text-blue-700 transition ease-in-out duration-500">
           <i class="fad fa-cogs text-xs mr-2"></i>
           Pengaturan Akun
         </a>
@@ -146,141 +148,120 @@ include '../php/pages/dashboard_buat_tugas/main.php';
     <!-- Main Content -->
     <div class="bg-gray-100 flex-1 p-6 md:mt-16">
 
-      <div class="mb-5 flex justify-between items-center">
-
-        <!-- Title -->
-        <div>
-          <h2 class="text-2xl font-semibold text-gray-800">Buat Tugas</h2>
-        </div>
-
-        <!-- Search Data -->
-        <div style="position: relative; top: 8px;">
-          <input id="search-task" type="text" placeholder="Cari Tugas..."
-            value="<?php echo htmlspecialchars($search); ?>"
-            class="w-72 pl-10 pr-4 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 text-sm font-medium text-gray-700 transition-all"
-            autocomplete="off" />
-          <svg style="position: relative; bottom: 29px; left: 12px" class="h-5 w-5 text-gray-400"
-            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M11 4a7 7 0 100 14 7 7 0 000-14zM21 21l-4.35-4.35" />
-          </svg>
-        </div>
-
-        <!-- Pagination Dropdown -->
-        <div class="relative inline-block">
-          <select id="page-select"
-            class="block w-full px-4 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 text-sm font-medium text-gray-700 transition-all"
-            onchange="location = this.value;">
-            <?php for ($i = 1; $i <= $total_pages; $i++): ?>
-            <option class="font-medium text-gray-700" value="?page=<?= $i ?>&search=<?= urlencode($search) ?>"
-              <?=$i==$page ? 'selected' : '' ?>>
-              Halaman
-              <?= $i ?>
-            </option>
-            <?php endfor; ?>
-          </select>
-        </div>
-
+      <!-- Title -->
+      <div class="mb-5">
+        <h2 class="text-2xl font-semibold text-gray-800">Buat Tugas</h2>
       </div>
 
+      <!-- Search Data -->
+      <div class="relative w-full sm:w-full md:w-full">
+        <input id="search-task" type="text" placeholder="Cari Tugas..." value="<?php echo htmlspecialchars($search); ?>"
+          class="w-full sm:w-full md:w-full pl-10 pr-4 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 text-sm font-medium text-gray-700 transition-all"
+          autocomplete="off" />
+        <svg style="top: -20px; position: relative; left  :10px"
+          class="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400"
+          xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M11 4a7 7 0 100 14 7 7 0 000-14zM21 21l-4.35-4.35" />
+        </svg>
+      </div>
 
-      <div class="space-y-4">
+      <!-- Pagination Dropdown -->
+      <div class="relative mb-4 sm:w-full md:w-full">
+        <select id="page-select"
+          class="block w-full md:w-full sm:w-full px-4 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 text-sm font-medium text-gray-700 transition-all"
+          onchange="location = this.value;">
+          <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+          <option class="font-medium text-gray-700" value="?page=<?= $i ?>&search=<?= urlencode($search) ?>"
+            <?=$i==$page ? 'selected' : '' ?>>
+            Halaman
+            <?= $i ?>
+          </option>
+          <?php endfor; ?>
+        </select>
+      </div>
 
-        <!-- Sweet Alert -->
-        <?php include 'include/sweetalert_buat_tugas.php'; ?>
+      <!-- Form Add Task -->
+      <form id="task_form" action="dashboard_buat_tugas.php" method="POST"
+        class="flex flex-wrap gap-4 p-4 bg-white rounded-lg shadow mb-4">
+        <input id="task_name" name="task_name" type="text" maxlength="50"
+          class="flex-1 bg-gray-100 rounded-md p-2 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          autocomplete="off" placeholder="Masukkan nama tugas..." required />
+        <input id="deadline" name="deadline" type="date"
+          class="bg-gray-100 rounded-md p-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        <select id="priority" name="priority"
+          class="bg-gray-100 rounded-md p-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <option value="penting">Penting</option>
+          <option value="biasa" selected>Biasa</option>
+        </select>
+        <button type="submit" class="btn-bs-primary w-full sm:w-auto">Tambah</button>
+      </form>
 
-        <!-- Form Add Task -->
-        <form id="task_form" action="dashboard_buat_tugas.php" method="POST"
-          class="flex items-center space-x-4 p-4 bg-white rounded-lg shadow">
-          <input id="task_name" name="task_name" type="text" maxlength="50"
-            class="flex-1 bg-gray-100 rounded-md p-2 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500" autocomplete="off"
-            placeholder="Masukkan nama tugas..." required />
-          <input id="deadline" name="deadline" type="date"
-            class="bg-gray-100 rounded-md p-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="Pilih tanggal" />
-          <select id="priority" name="priority"
-            class="bg-gray-100 rounded-md p-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
-            <option value="penting">Penting</option>
-            <option value="biasa" selected>Biasa</option>
-          </select>
-          <button type="submit" class="btn-bs-primary">Tambah</button>
-        </form>
-        <!-- End - Form Add Task -->
+      <!-- Task List -->
+      <div class="bg-white shadow rounded-lg p-6 mt-6">
+        <?php if (count($tasks) > 0): ?>
+        <div id="task_list" class="max-h-96 overflow-auto space-y-2">
+          <?php foreach ($tasks as $task): ?>
+          <div
+            class="flex flex-wrap items-center space-x-4 p-4 rounded-md shadow bg-white task-item <?php echo ($task['status'] == 'Complete') ? 'line-through text-gray-400' : ''; ?>"
+            id="task-<?php echo $task['task_id']; ?>">
 
-        <!-- Task List -->
-        <div class="bg-white shadow rounded-lg p-6 mt-6">
-          <?php if (count($tasks) > 0): ?>
-          <div id="task_list" class="max-h-96 overflow-auto space-y-2">
-            <?php foreach ($tasks as $task): ?>
-            <div
-              class="flex items-center space-x-4 p-4 rounded-md shadow bg-white task-item <?php echo ($task['status'] == 'Complete') ? 'line-through text-gray-400' : ''; ?>"
-              id="task-<?php echo $task['task_id']; ?>">
-
-              <!-- Task Name -->
-              <div class="flex-1">
-                <span class="font-medium text-gray-800">
-                  <?php echo $task['task_name']; ?>
+            <!-- Task Name -->
+            <div class="flex-1">
+              <span class="font-medium text-gray-800">
+                <?php echo $task['task_name']; ?>
+              </span>
+              <div class="text-sm text-gray-500">
+                Deadline: <span class="text-red-500 font-semibold">
+                  <?php echo ($task['deadline'] == "Tidak ada deadline" ? "Tidak ada deadline" : $task['deadline']); ?>
                 </span>
-                <div class="text-sm text-gray-500">
-                  Deadline: <span class="text-red-500 font-semibold">
-                    <?php echo ($task['deadline'] == "Tidak ada deadline" ? "Tidak ada deadline" : $task['deadline']); ?>
-                  </span>
-                </div>
-
-                <!-- Priority & Status Badges -->
-                <div class="mt-2 flex space-x-2">
-                  <span
-                    class="px-3 py-1 text-sm font-medium text-white rounded-md bg-<?php echo ($task['priority'] == 'penting') ? 'red' : 'blue'; ?>-500">
-                    <?php echo ucfirst($task['priority']); ?>
-                  </span>
-                  <span id="status-badge-<?php echo $task['task_id']; ?>"
-                    class="px-3 py-1 text-sm font-medium text-white rounded-md <?php echo ($task['status'] == 'selesai') ? 'bg-green-500' : 'bg-orange-500'; ?>">
-                    <?php echo ucfirst($task['status']); ?>
-                  </span>
-                </div>
               </div>
 
-              <!-- Status Dropdown -->
-              <div class="flex items-center space-x-2">
-                <select class="text-sm p-1 bg-gray-100 rounded-md status-dropdown"
-                  data-task-id="<?php echo $task['task_id']; ?>" data-status="<?php echo $task['status']; ?>">
-                  <option <?php echo ($task['status']=='' ) ? 'selected' : '' ; ?>>Pilih status
-                  </option>
-                  <option value="Tertunda" <?php echo ($task['status']=='Tertunda' ) ? 'selected' : '' ; ?>>Tertunda
-                  </option>
-                  <option value="Selesai" <?php echo ($task['status']=='Selesai' ) ? 'selected' : '' ; ?>>Selesai
-                  </option>
-                </select>
+              <!-- Priority & Status Badges -->
+              <div class="mt-2 flex space-x-2">
+                <span
+                  class="px-3 py-1 text-sm font-medium text-white rounded-md bg-<?php echo ($task['priority'] == 'penting') ? 'red' : 'blue'; ?>-500">
+                  <?php echo ucfirst($task['priority']); ?>
+                </span>
+                <span id="status-badge-<?php echo $task['task_id']; ?>"
+                  class="px-3 py-1 text-sm font-medium text-white rounded-md <?php echo ($task['status'] == 'selesai') ? 'bg-green-500' : 'bg-orange-500'; ?>">
+                  <?php echo ucfirst($task['status']); ?>
+                </span>
               </div>
-
-              <!-- Edit Task -->
-              <i class="fas fa-edit text-blue-500 cursor-pointer" onclick="openEditTaskModal(this)"
-                data-task-id="<?php echo $task['task_id']; ?>" data-task-name="<?php echo $task['task_name']; ?>"
-                data-deadline="<?php echo $task['deadline']; ?>" data-priority="<?php echo $task['priority']; ?>">
-              </i>
-
-              <!-- Delete Task -->
-              <i class="fa fa-trash text-red-600 cursor-pointer"
-                onclick="openModal('dashboard_buat_tugas.php?id=<?php echo $task['task_id']; ?>')"></i>
             </div>
-            <?php endforeach; ?>
+
+            <!-- Status Dropdown -->
+            <div class="flex items-center space-x-2">
+              <select class="text-sm p-1 bg-gray-100 rounded-md status-dropdown"
+                data-task-id="<?php echo $task['task_id']; ?>" data-status="<?php echo $task['status']; ?>">
+                <option <?php echo ($task['status']=='' ) ? 'selected' : '' ; ?>>Pilih status</option>
+                <option value="Tertunda" <?php echo ($task['status']=='Tertunda' ) ? 'selected' : '' ; ?>>Tertunda
+                </option>
+                <option value="Selesai" <?php echo ($task['status']=='Selesai' ) ? 'selected' : '' ; ?>>Selesai</option>
+              </select>
+            </div>
+
+            <!-- Edit Task -->
+            <i class="fas fa-edit text-blue-500 cursor-pointer" onclick="openEditTaskModal(this)"
+              data-task-id="<?php echo $task['task_id']; ?>" data-task-name="<?php echo $task['task_name']; ?>"
+              data-deadline="<?php echo $task['deadline']; ?>" data-priority="<?php echo $task['priority']; ?>"></i>
+
+            <!-- Delete Task -->
+            <i class="fa fa-trash text-red-600 cursor-pointer"
+              onclick="openModal('dashboard_buat_tugas.php?id=<?php echo $task['task_id']; ?>')"></i>
           </div>
-
-          <!-- Jika tidak ada tugas muncul ui ini -->
-          <?php else: ?>
-          <div class="bg-gray-100 p-4 text-center rounded-lg">
-            <p class="text-gray-600">Tidak Ada Tugas.</p>
-          </div>
-          <?php endif; ?>
-
-        </div> <!-- Task List -->
-
-      </div>
+          <?php endforeach; ?>
+        </div>
+        <?php else: ?>
+        <div class="bg-gray-100 p-4 text-center rounded-lg">
+          <p class="text-gray-600">Tidak Ada Tugas.</p>
+        </div>
+        <?php endif; ?>
+      </div> <!-- Task List -->
 
     </div> <!-- End - Main Content -->
 
   </div> <!-- End - Wrapper -->
-
 
   <!-- Javascript Main -->
   <script src="assets/js/main.js"></script>
@@ -356,5 +337,5 @@ include '../php/pages/dashboard_buat_tugas/main.php';
   </div>
 </div>
 <!-- End - Modal Edit Task -->
- 
+
 </html>

@@ -21,7 +21,7 @@ include '../php/admin/dashboard_pengguna/main.php';
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Title -->
-  <title>Luxe Task | Dashboard Kelola Pengguna</title>
+  <title>Luxe Task | Dashboard Pengguna</title>
 
   <!-- Favicons -->
   <link rel="shortcut icon" href="../assets/img/fav.png" type="image/x-icon">
@@ -110,13 +110,13 @@ include '../php/admin/dashboard_pengguna/main.php';
         <p class="uppercase text-xs text-gray-600 mb-4 tracking-wider">Dashboard</p>
 
         <a href="dashboard_beranda.php"
-          class="hover:text-blue-700 mb-3 capitalize font-medium text-sm transition ease-in-out duration-500">
+          class="text-blue-700 mb-3 capitalize font-medium text-sm transition ease-in-out duration-500">
           <i class="fad fa-chart-pie text-xs mr-2"></i>
           Beranda
         </a>
 
         <a href="dashboard_pengguna.php"
-          class="mb-3 capitalize font-medium text-sm text-blue-700 transition ease-in-out duration-500">
+          class="mb-3 capitalize font-medium text-sm hover:text-blue-700 transition ease-in-out duration-500">
           <i class="fad fa-users text-xs mr-2"></i>
           Kelola Pengguna
         </a>
@@ -143,21 +143,7 @@ include '../php/admin/dashboard_pengguna/main.php';
 
       <div class="bg-white shadow-lg rounded-xl p-6">
         <!-- Action Buttons -->
-        <div class="flex justify-between items-center mb-4">
-          <div class="flex gap-3">
-            <button onclick="window.location.href='dashboard_tambah_data.php';"
-              class="px-4 py-2 btn-bs-primary focus:outline-none">
-              <i class="fas fa-plus mr-2"></i> Tambah Data
-            </button>
-            <button onclick="window.location.href='export_excel.php';"
-              class="px-4 py-2 btn-bs-success focus:outline-none">
-              <i class="fas fa-file-excel mr-2"></i> Export XLSX
-            </button>
-            <button onclick="window.location.href='export_pdf.php';" class="px-4 py-2 btn-bs-danger focus:outline-none">
-              <i class="fas fa-file-pdf mr-2"></i> Export PDF
-            </button>
-          </div>
-
+        <div class="flex justify-between items-center mb-4 sm:flex md: flex sm:flex-col md:flex-col">
           <!-- Search Data -->
           <div style="position: relative; top: 8px;">
             <input id="search-data" type="text" placeholder="Cari Disini..."
@@ -170,70 +156,72 @@ include '../php/admin/dashboard_pengguna/main.php';
             </svg>
           </div>
 
+          <div class="flex gap-3">
+            <button onclick="window.location.href='dashboard_tambah_data.php';" class="flex items-center sm:flex-col px-4 py-2 btn-bs-primary focus:outline-none text-sm sm:text-xs">
+              <i class="fas fa-plus mr-2"></i> Tambah Data
+            </button>
+            <button onclick="window.location.href='export_excel.php';"
+              class="flex items-center sm:flex-col px-4 py-2 btn-bs-success focus:outline-none text-sm sm:text-xs">
+              <i class="fas fa-file-excel mr-2"></i> Export XLSX
+            </button>
+            <button onclick="window.location.href='export_pdf.php';" class="flex items-center sm:flex-col px-4 py-2 btn-bs-danger focus:outline-none text-sm sm:text-xs">
+              <i class="fas fa-file-pdf mr-2"></i> Export PDF
+            </button>
+          </div>
+
         </div>
 
-        <!-- Table -->
-        <div class="overflow-x-auto">
-          <table class="min-w-full table-auto border-collapse border border-gray-200">
-            <thead class="bg-gray-100">
-              <tr>
-                <th class="px-4 py-2 border border-gray-200 text-left font-medium text-sm text-gray-700"
-                  style="text-transform: none;">ID</th>
-                <th class="px-4 py-2 border border-gray-200 text-left font-medium text-sm text-gray-700"
-                  style="text-transform: none;">Nama</th>
-                <th class="px-4 py-2 border border-gray-200 text-left font-medium text-sm text-gray-700"
-                  style="text-transform: none;">Email</th>
-                <th class="px-4 py-2 border border-gray-200 text-left font-medium text-sm text-gray-700"
-                  style="text-transform: none;">Role</th>
-                <th class="px-4 py-2 border border-gray-200 text-left font-medium text-sm text-gray-700"
-                  style="text-transform: none;">Tanggal Dibuat</th>
-                <th class="px-4 py-2 border border-gray-200 text-center font-medium text-sm text-gray-700"
-                  style="text-transform: none;">Aksi</th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php if ($result->num_rows > 0): ?>
-              <?php while ($row = $result->fetch_assoc()): ?>
-              <tr class="hover:bg-gray-100 transition">
-                <td class="px-4 py-2 border border-gray-200 text-sm text-gray-700 whitespace-nowrap"
-                  style="text-transform: none;">
-                  <?= $row['user_id'] ?>
-                </td>
-                <td class="px-4 py-2 border border-gray-200 text-sm text-gray-700 break-all"
-                  style="text-transform: none;">
-                  <?= htmlspecialchars($row['name']) ?>
-                </td>
-                <td class="px-4 py-2 border border-gray-200 text-sm text-gray-700 break-all"
-                  style="text-transform: none;">
-                  <?= htmlspecialchars($row['email']) ?>
-                </td>
-                <td class="px-4 py-2 border border-gray-200 text-sm text-gray-700" style="text-transform: none;">
-                  <?= $row['role'] ?>
-                </td>
-                <td class="px-4 py-2 border border-gray-200 text-sm text-gray-700" style="text-transform: none;">
-                  <?= $row['created_at'] ?>
-                </td>
-                <td class="px-4 py-2 border border-gray-200 text-center">
-                  <button onclick="window.location.href='dashboard_edit_data.php?user_id=<?= $row['user_id'] ?>';"
-                    class="text-blue-600 hover:text-blue-800 mx-2 text-sm focus:outline-none">
-                    <i class="fas fa-edit"></i>
-                  </button>
-                  <button onclick="window.location.href='dashboard_delete_data.php?user_id=<?= $row['user_id'] ?>';"
-                    class="text-red-600 hover:text-red-800 mx-2 text-sm focus:outline-none">
-                    <i class="fas fa-trash-alt"></i>
-                  </button>
-                </td>
-              </tr>
-              <?php endwhile; ?>
-              <?php else: ?>
-              <tr>
-                <td colspan="6" class="px-4 py-2 text-center text-gray-500 text-sm" style="text-transform: none;">Tidak
-                  ada data pengguna.</td>
-              </tr>
-              <?php endif; ?>
-            </tbody>
-          </table>
-        </div>
+<!-- Table -->
+<div class="overflow-x-auto">
+  <table class="min-w-full table-auto border-collapse border border-gray-200">
+    <thead class="bg-gray-100">
+      <tr>
+        <th class="px-4 py-2 border border-gray-200 text-left font-medium text-sm text-gray-700">ID</th>
+        <th class="px-4 py-2 border border-gray-200 text-left font-medium text-sm text-gray-700">Nama</th>
+        <th class="px-4 py-2 border border-gray-200 text-left font-medium text-sm text-gray-700 sm:hidden md:hidden">Email</th>
+        <th class="px-4 py-2 border border-gray-200 text-left font-medium text-sm text-gray-700">Role</th>
+        <th class="px-4 py-2 border border-gray-200 text-left font-medium text-sm text-gray-700 sm:hidden md:hidden">
+          Tanggal Dibuat
+        </th>
+        <th class="px-4 py-2 border border-gray-200 text-center font-medium text-sm text-gray-700">Aksi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php while ($row = $result->fetch_assoc()): ?>
+      <tr class="hover:bg-gray-100 transition">
+        <td class="px-4 py-2 border border-gray-200 text-sm text-gray-700">
+          <?= $row['user_id'] ?>
+        </td>
+        <td
+          class="px-4 py-2 border border-gray-200 text-sm text-gray-700 whitespace-nowrap overflow-hidden text-ellipsis max-w-[150px]">
+          <?= htmlspecialchars($row['name']) ?>
+        </td>
+        <td class="px-4 py-2 border border-gray-200 text-sm text-gray-700 sm:hidden md:hidden">
+          <?= htmlspecialchars($row['email']) ?>
+        </td>
+        <td class="px-4 py-2 border border-gray-200 text-sm text-gray-700">
+          <?= $row['role'] ?>
+        </td>
+        <td class="px-4 py-2 border border-gray-200 text-sm text-gray-700 sm:hidden md:hidden">
+          <?= $row['created_at'] ?>
+        </td>
+        <td class="px-4 py-2 border border-gray-200 text-center">
+          <button onclick="window.location.href='dashboard_edit_data.php?user_id=<?= $row['user_id'] ?>';"
+            class="text-blue-600 hover:text-blue-800 mx-2 text-sm focus:outline-none">
+            <i class="fas fa-edit"></i>
+          </button>
+          <button onclick="window.location.href='dashboard_delete_data.php?user_id=<?= $row['user_id'] ?>';"
+            class="text-red-600 hover:text-red-800 mx-2 text-sm focus:outline-none">
+            <i class="fas fa-trash-alt"></i>
+          </button>
+        </td>
+      </tr>
+      <?php endwhile; ?>
+    </tbody>
+  </table>
+</div>
+
+
 
         <!-- Entri Data & Dropdown Pagination -->
         <div class="flex justify-between items-center mt-8">
@@ -257,24 +245,24 @@ include '../php/admin/dashboard_pengguna/main.php';
               class="block w-full px-4 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 text-sm font-medium text-gray-700 transition-all"
               onchange="location = this.value;">
               <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                <option value="?page=<?= $i ?>&search=<?= htmlspecialchars($searchQuery) ?>" <?=$i==$page ? 'selected'
-                  : '' ?>>
-                  Halaman
-                  <?= $i ?>
-                </option>
+              <option value="?page=<?= $i ?>&search=<?= htmlspecialchars($searchQuery) ?>" <?=$i==$page ? 'selected'
+                : '' ?>>
+                Halaman
+                <?= $i ?>
+              </option>
               <?php endfor; ?>
             </select>
           </div>
 
-        </table>
-      </div>
+          </table>
+        </div>
 
-    </div> <!-- End - Main Content -->
+      </div> <!-- End - Main Content -->
 
-  </div> <!-- End - Wrapper -->
+    </div> <!-- End - Wrapper -->
 
-  <!-- Javascript Main -->
-  <script src="assets/js/main.js"></script>
+    <!-- Javascript Main -->
+    <script src="assets/js/main.js"></script>
 
 </body>
 

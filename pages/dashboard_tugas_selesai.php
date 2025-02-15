@@ -148,7 +148,7 @@ include '../php/pages/dashboard_tugas_selesai/main.php';
     <!-- Main Content -->
     <div class="bg-gray-100 flex-1 p-6 md:mt-16">
 
-      <div class="mb-5 flex justify-between items-center">
+      <div class="mb-5 flex flex-wrap justify-between items-center gap-4 sm:flex-col sm:items-start">
 
         <!-- Title -->
         <div>
@@ -156,11 +156,11 @@ include '../php/pages/dashboard_tugas_selesai/main.php';
         </div>
 
         <!-- Search Data -->
-        <div style="position: relative; top: 8px;">
+        <div style="position: relative; top: 8px;" class="sm:w-full md:w-full">
           <form method="GET">
             <input id="search-task" name="search" type="text" placeholder="Cari Tugas..."
               value="<?php echo htmlspecialchars($search); ?>"
-              class="w-72 pl-10 pr-4 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 text-sm font-medium text-gray-700 transition-all"
+              class="w-72 sm:w-full md:w-full pl-10 pr-4 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 text-sm font-medium text-gray-700 transition-all"
               autocomplete="off" />
             <button type="submit" hidden></button>
             <svg style="position: relative; bottom: 29px; left: 12px" class="h-5 w-5 text-gray-400"
@@ -171,8 +171,8 @@ include '../php/pages/dashboard_tugas_selesai/main.php';
           </form>
         </div>
 
-        <!-- Pagination -->
-        <div class="relative inline-block">
+        <!-- Pagination Dropdown -->
+        <div class="relative sm:w-full md:w-full">
           <select id="page-select"
             class="block w-full px-4 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 text-sm font-medium text-gray-700 transition-all"
             onchange="location = this.value;">

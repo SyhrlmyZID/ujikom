@@ -1,11 +1,11 @@
 <?php
-// Pastikan koneksi ke database
+
 require '../../../config/connection.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (isset($_POST['task_id']) && isset($_POST['status'])) {
     $task_id = intval($_POST['task_id']);
-    $status = ucfirst(strtolower(trim($_POST['status']))); // Format status menjadi kapital di awal
+    $status = ucfirst(strtolower(trim($_POST['status'])));
 
     // Pastikan status valid ('Tertunda' atau 'Selesai')
     if ($status !== 'Tertunda' && $status !== 'Selesai') {

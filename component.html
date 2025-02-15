@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Users Table</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="h-screen bg-gray-900 text-white flex items-center justify-center">
+
+  <div class="container mx-auto">
+    <h1 class="text-2xl font-bold mb-6 text-center">Responsive Users Table</h1>
+    <table class="min-w-full bg-gray-800 rounded-lg overflow-hidden">
+      <thead>
+        <tr class="bg-gray-700 text-gray-300">
+          <th class="p-4">ID</th>
+          <th class="p-4">Name</th>
+          <th class="p-4">Email</th>
+          <th class="p-4">Role</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-b border-gray-700">
+          <td class="p-4">1</td>
+          <td class="p-4 max-w-[250px] overflow-hidden whitespace-nowrap text-ellipsis name-cell" data-fullname="Johnathan Alexander Doe the Third of Wonderland">
+            Johnathan Alexander Doe the Third of Wonderland
+          </td>
+          <td class="p-4 overflow-hidden whitespace-nowrap text-ellipsis max-w-[300px]">johnathan.alexander.doe.wonderland@example-longdomain.com</td>
+          <td class="p-4 overflow-hidden whitespace-nowrap text-ellipsis max-w-[100px]">Admin</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    function shortenTextBasedOnScreenWidth() {
+      const nameCells = document.querySelectorAll('.name-cell');
+      nameCells.forEach(cell => {
+        const fullName = cell.dataset.fullname;
+        let shortenedName = fullName;
+
+        if (window.innerWidth < 768) {
+          shortenedName = fullName.split(' ')[0] + '...'; // Nama depan saja
+        } else if (window.innerWidth < 1024) {
+          shortenedName = fullName.split(' ').slice(0, 4).join(' ') + '...'; // 4 kata pertama
+        }
+
+        cell.textContent = shortenedName;
+      });
+    }
+
+    window.addEventListener('resize', shortenTextBasedOnScreenWidth);
+    window.addEventListener('DOMContentLoaded', shortenTextBasedOnScreenWidth);
+  </script>
+
+</body>
+</html>

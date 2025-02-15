@@ -348,7 +348,7 @@ include 'php/session_index.php';
 
         <!-- Subscribe Form -->
         <div class="mt-28 px-4 sm:px-10">
-            <div class="max-w-7xl mx-auto bg-gradient-to-r from-teal-700 via-teal-600 to-teal-700 py-16 px-6 relative">
+            <div class="max-w-7xl mx-auto bg-[#5a67d8] py-16 px-6 relative">
                 <div class="max-w-2xl mx-auto text-center">
                     <h2 class="md:text-4xl text-3xl font-semibold mb-6 text-white">Subscribe Luxe Tasks</h2>
                     <div class="my-6">
